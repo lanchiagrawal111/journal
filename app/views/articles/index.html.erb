@@ -1,0 +1,41 @@
+<section class="text-center dark">
+<h4 class="mb-5" style="color:white"><strong>Articles</strong></h4>
+    <div class="container">
+      <div class="row"> 
+        <% @articles.each do |article| %>
+            <div class="col-lg-4 col-md-6 m-4">
+                <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <%=link_to(image_tag(article.image.thumb.url, alt:'Image', class: "img-fluid"), article.image.url,target:'_blank') if article.image?%>
+                <div class="img-overlay">
+                <%= link_to '<button style="background-color: black; border: none; opacity: 0.6; color: white; cursor:pointer ">Read More</button>'.html_safe , article %>
+               </div>
+              </div>
+                    
+  
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        <%= article.title %>
+                        </h5>
+                        <p class="card-text">
+                          <%= article.body %>
+                        </p>
+  
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        <% end %> 
+      <%= will_paginate @articles %>     
+      </div>
+    </div>
+</section>
+  
+  
+
+
+ 
